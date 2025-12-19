@@ -1,0 +1,103 @@
+# ======================
+# Go build artifacts
+# ======================
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binaries
+*.test
+
+# Coverage
+*.out
+
+# ======================
+# Go workspace files
+# ======================
+go.work
+go.work.sum
+
+# ======================
+# Generated site output
+# ======================
+public/
+dist/
+build/
+
+# ======================
+# OS / editor junk
+# ======================
+.DS_Store
+Thumbs.db
+
+# Vim / Neovim
+*.swp
+*.swo
+*.swn
+.nvim/
+.vim/
+
+# VS Code
+.vscode/
+
+# JetBrains
+.idea/
+
+# ======================
+# Logs
+# ======================
+*.log
+# ======================
+# Go build artifacts
+# ======================
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binaries
+*.test
+
+# Coverage
+*.out
+
+# ======================
+# Go workspace files
+# ======================
+go.work
+go.work.sum
+
+# ======================
+# Generated site output
+# ======================
+public/
+dist/
+build/
+
+# ======================
+# OS / editor junk
+# ======================
+.DS_Store
+Thumbs.db
+
+# Vim / Neovim
+*.swp
+*.swo
+*.swn
+.nvim/
+.vim/
+
+# VS Code
+.vscode/
+
+# JetBrains
+.idea/
+
+# ======================
+# Logs
+# ======================
+*.log
+
