@@ -21,6 +21,7 @@ jobs:
         run: go test ./...
 
   deploy:
+    environment: production
     needs: test
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
