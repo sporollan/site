@@ -5,9 +5,21 @@ on:
   push:
     branches: ["main"]
 
+env:
+  # Default environment variables for all jobs
+  SITE_INPUT_DIR: content
+  SITE_OUTPUT_DIR: public
+  SITE_STATIC_DIR: static
+  SITE_TEMPLATE_DIR: templates
+  SITE_NAME: "Santiago Porollan"
+
 jobs:
   test:
     runs-on: ubuntu-latest
+    
+    # Development environment variables
+    env:
+      SITE_BASE_URL: http://localhost:8080
 
     steps:
       - uses: actions/checkout@v4
@@ -26,10 +38,19 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
+    # Production environment variables
+    env:
+      SITE_BASE_URL: https://sporollan.com
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build site
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+          cache: true
+
+      - name: Build and run site
         run: |
           go build -o site ./cmd/site
           ./site
