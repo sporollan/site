@@ -143,12 +143,11 @@ body::before {
 
 /* Main Content */
 main {
-  padding: 2rem 0;
+  padding: 0rem 0;
   min-height: 60vh;
 }
 
 .container {
-  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -166,7 +165,7 @@ h6 {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   margin-top: 1rem;
   background: linear-gradient(135deg, var(--blue), var(--cyan));
   -webkit-background-clip: text;
@@ -175,19 +174,19 @@ h1 {
 }
 
 h2 {
-  font-size: 2rem;
-  color: var(--purple);
+  font-size: 1.25rem;
+  /*color: var(--purple);*/
   margin-top: 2rem;
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.10rem;
   color: var(--green);
   margin-top: 1.5rem;
 }
 
 h4 {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: var(--yellow);
 }
 
@@ -497,7 +496,9 @@ article {
   margin-top: 2rem;
 }
 .mt-3 {
-  margin-top: 3rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 5px;
 }
 .mb-1 {
   margin-bottom: 1rem;
@@ -678,4 +679,31 @@ article {
 
 .contact-success {
   animation: fadeIn 0.3s ease;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 0rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: var(--surface-light);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--foreground);
+    transition: all 0.2s ease;
+}
+
+.social-link:hover {
+    background: var(--blue);
+    color: white;
+    transform: translateY(-2px);
+    border-color: var(--blue);
 }

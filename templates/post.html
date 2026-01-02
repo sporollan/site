@@ -8,6 +8,7 @@
 </head>
 <body>
     <header class="site-header">
+        <h1 class="site-title">{{.SiteName}}</h1>
         <nav class="site-nav">
             <a href="/" class="nav-link {{if eq .Permalink "/"}}active{{end}}">Home</a>
             <a href="/blog/" class="nav-link {{if eq .Permalink "/blog/"}}active{{end}}">Blog</a>
@@ -17,10 +18,37 @@
     
     <main class="container">
         <article>
-            <h1>{{.Title}}</h1>
+            <header>
+                <h1>{{.Title}}</h1>
+                <div class="post-meta">
+                    {{if not .Date.IsZero}}
+                    <span class="post-date">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        {{.Date.Format "January 2, 2006"}}
+                    </span>
+                    {{end}}
+                </div>
+            </header>
+            
             <div class="content">
                 {{.Body | safeHTML}}
             </div>
+            
+            {{if .Tags}}
+            <footer class="post-footer">
+                <div class="tag-list">
+                    {{range .Tags}}
+                    <span class="tag">{{.}}</span>
+                    {{end}}
+                </div>
+                <p class="mt-2">
+                    <a href="/blog/" class="btn">← Back to Blog</a>
+                </p>
+            </footer>
+            {{end}}
         </article>
     </main>
     
