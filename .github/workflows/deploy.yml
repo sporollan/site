@@ -4,6 +4,8 @@ on:
   pull_request:
   push:
     branches: ["main"]
+    paths-ignore:
+      - 'README.md'
 
 env:
   # Default environment variables for all jobs
