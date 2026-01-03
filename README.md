@@ -1,1 +1,2 @@
-# main-website
+# A Minimal Static Site Generator
+This is a lightweight SSG built to handle my specific templates and content structure. It's currently in early development, prioritizing core functionality. Roadmap and improvements are planned for future updates.
