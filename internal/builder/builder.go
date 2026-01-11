@@ -52,6 +52,11 @@ func (b *Builder) Build() error {
 		return err
 	}
 
+	// Update home page with recent posts
+	if err := b.generateHomePage(); err != nil {
+		return err
+	}
+
 	log.Printf("Build complete! Generated %d pages", len(b.site.Pages))
 	return nil
 }
@@ -185,7 +190,7 @@ func (b *Builder) processMarkdownFile(path string) error {
 	}
 	b.site.Collections[dir] = append(b.site.Collections[dir], &page)
 
-	log.Printf("✓ Generated: %s", outputPath)
+	log.Printf("Generated: %s", outputPath)
 	return nil
 }
 
@@ -233,7 +238,7 @@ func (b *Builder) generateIndexPages() error {
 			return fmt.Errorf("failed to write blog index: %w", err)
 		}
 
-		log.Printf("✓ Generated blog index with %d posts: %s", len(posts), blogIndexPath)
+		log.Printf("Generated blog index with %d posts: %s", len(posts), blogIndexPath)
 	}
 
 	return nil
@@ -282,7 +287,55 @@ func (b *Builder) copyStaticFiles() error {
 			return err
 		}
 
-		log.Printf("✓ Copied static file: %s", destPath)
+		log.Printf("Copied static file: %s", destPath)
 		return nil
 	})
+}
+
+func (b *Builder) generateHomePage() error {
+	// Find the home page (permalink "/")
+	var homePage *site.Page
+	for _, page := range b.site.Pages {
+		if page.Permalink == "/" {
+			homePage = page
+			break
+		}
+	}
+
+	if homePage == nil {
+		// No home page found, nothing to do
+		return nil
+	}
+
+	// Get recent blog posts (max 5)
+	if posts, exists := b.site.Collections["blog"]; exists && len(posts) > 0 {
+		// Posts are already sorted newest first in generateIndexPages()
+		recentCount := 5
+		if len(posts) < recentCount {
+			recentCount = len(posts)
+		}
+		recentPosts := posts[:recentCount]
+
+		// Initialize Metadata map if nil
+		if homePage.Metadata == nil {
+			homePage.Metadata = make(map[string]interface{})
+		}
+		homePage.Metadata["RecentPosts"] = recentPosts
+
+		// Re-render the home page with updated metadata
+		html, err := b.renderer.Render(*homePage)
+		if err != nil {
+			return fmt.Errorf("failed to re-render home page: %w", err)
+		}
+
+		// Write updated home page
+		outputPath := filepath.Join(b.site.OutputDir, "index.html")
+		if err := os.WriteFile(outputPath, html, 0644); err != nil {
+			return fmt.Errorf("failed to write updated home page: %w", err)
+		}
+
+		log.Printf("Updated home page with %d recent posts", len(recentPosts))
+	}
+
+	return nil
 }

@@ -4,130 +4,46 @@
         margin: 0 auto;
     }
     
-    .contact-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        margin-top: 2rem;
-    }
-    
-    @media (max-width: 768px) {
-        .contact-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-    
     .contact-info {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 2rem;
-    }
-    
-    .contact-form {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 2rem;
-    }
-    
-    .form-group {
-        margin-bottom: 1.5rem;
-    }
-    
-    .form-label {
-        display: block;
-        margin-bottom: 0.5rem;
-        color: var(--blue);
-        font-weight: 500;
-    }
-    
-    .form-input,
-    .form-textarea {
-        width: 100%;
-        padding: 0.75rem 1rem;
-        background: var(--surface-light);
-        border: 1px solid var(--border-light);
-        border-radius: 8px;
-        color: var(--foreground);
-        font-family: var(--font-sans);
-        font-size: 1rem;
-        transition: all 0.2s ease;
-    }
-    
-    .form-input:focus,
-    .form-textarea:focus {
-        outline: none;
-        border-color: var(--blue);
-        box-shadow: 0 0 0 3px rgba(122, 162, 247, 0.1);
-    }
-    
-    .form-textarea {
-        min-height: 150px;
-        resize: vertical;
+        margin-top: 2rem;
     }
     
     .contact-details {
         list-style: none;
         padding: 0;
-        margin-top: 2rem;
+        margin: 1.5rem 0;
     }
     
     .contact-details li {
         display: flex;
-        align-items: flex-start;
-        gap: 1rem;
-        margin-bottom: 0rem;
-        padding-bottom: 0.5rem;
-        
+        align-items: baseline;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
     }
     
     .contact-details li:last-child {
         border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
     }
     
-    .contact-icon {
-        background: linear-gradient(135deg, var(--blue), var(--purple));
-        color: white;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .contact-label {
+        font-weight: 500;
+        color: var(--blue);
+        min-width: 5rem;
         flex-shrink: 0;
     }
     
-    .contact-detail-content h3 {
-        margin: 0 0 0.5rem 0;
-        font-size: 1.1rem;
-        color: var(--foreground);
+    .contact-details a {
+        color: var(--cyan);
+        text-decoration: none;
     }
     
-    .contact-detail-content p {
-        margin: 0;
-        color: var(--comment);
-    }
-    
-    .contact-success {
-        background: linear-gradient(135deg, var(--green), var(--cyan));
-        color: white;
-        padding: 1rem;
-        border-radius: 8px;
-        text-align: center;
-        margin-bottom: 2rem;
-        display: none;
-    }
-    
-    .contact-success.show {
-        display: block;
-    }
-    
-    .form-disclaimer {
-        font-size: 0.9rem;
-        color: var(--comment);
-        margin-top: 1rem;
-        text-align: center;
+    .contact-details a:hover {
+        color: var(--blue);
+        text-decoration: underline;
     }
 </style>
 {{end}}
@@ -142,31 +58,21 @@
     </article>
     {{end}}
     
-    <div class="contact-grid">
-        <div class="contact-info">
-            <h2>Get in Touch</h2>
-            <p>Feel free to reach out!</p>
-            
-            <ul class="contact-details">
-                <li>
-                    <div class="contact-detail-content">
-                        <p>santiago.porollan@gmail.com</p>
-                    </div>
-                </li>
-                <li>
-                    <div class="contact-detail-content">
-                        <a href="https://linkedin.com/in/santiago-porollan">Linkedin</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="contact-detail-content">
-                        <a href="https://github.com/sporollan">Github</a>
-                    </div>
-                </li>
-            </ul>
-        
-        </div>
-        
+    <div class="contact-info">
+        <ul class="contact-details">
+            <li>
+                <span class="contact-label">Email:</span>
+                <a href="mailto:santiago.porollan@gmail.com">santiago.porollan@gmail.com</a>
+            </li>
+            <li>
+                <span class="contact-label">LinkedIn:</span>
+                <a href="https://linkedin.com/in/santiago-porollan">linkedin.com/in/santiago-porollan</a>
+            </li>
+            <li>
+                <span class="contact-label">GitHub:</span>
+                <a href="https://github.com/sporollan">github.com/sporollan</a>
+            </li>
+        </ul>
     </div>
 </div>
 {{end}}
