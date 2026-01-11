@@ -1,210 +1,176 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{if .Title}}{{.Title}} - {{end}}{{.SiteName}}</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <style>
-        .contact-container {
-            margin: 0 auto;
-        }
-        
+{{define "extrahead_contact"}}
+<style>
+    .contact-container {
+        margin: 0 auto;
+    }
+    
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin-top: 2rem;
+    }
+    
+    @media (max-width: 768px) {
         .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 2rem;
+            grid-template-columns: 1fr;
         }
-        
-        @media (max-width: 768px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .contact-info {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-        }
-        
-        .contact-form {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--blue);
-            font-weight: 500;
-        }
-        
-        .form-input,
-        .form-textarea {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            background: var(--surface-light);
-            border: 1px solid var(--border-light);
-            border-radius: 8px;
-            color: var(--foreground);
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            transition: all 0.2s ease;
-        }
-        
-        .form-input:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--blue);
-            box-shadow: 0 0 0 3px rgba(122, 162, 247, 0.1);
-        }
-        
-        .form-textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .contact-details {
-            list-style: none;
-            padding: 0;
-            margin-top: 2rem;
-        }
-        
-        .contact-details li {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 0rem;
-            padding-bottom: 0.5rem;
-            /*border-bottom: 1px solid var(--border);*/
-        }
-        
-        .contact-details li:last-child {
-            border-bottom: none;
-        }
-        
-        .contact-icon {
-            background: linear-gradient(135deg, var(--blue), var(--purple));
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        
-        .contact-detail-content h3 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.1rem;
-            color: var(--foreground);
-        }
-        
-        .contact-detail-content p {
-            margin: 0;
-            color: var(--comment);
-        }
-        
-        .contact-success {
-            background: linear-gradient(135deg, var(--green), var(--cyan));
-            color: white;
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            margin-bottom: 2rem;
-            display: none;
-        }
-        
-        .contact-success.show {
-            display: block;
-        }
-        
-        .form-disclaimer {
-            font-size: 0.9rem;
-            color: var(--comment);
-            margin-top: 1rem;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-    <header class="site-header">
-        <nav class="site-nav">
-            <a href="/" class="nav-link {{if eq .Permalink "/"}}active{{end}}">Home</a>
-            <a href="/blog/" class="nav-link {{if eq .Permalink "/blog/"}}active{{end}}">Blog</a>
-            <a href="/contact/" class="nav-link {{if eq .Permalink "/contact/"}}active{{end}}">Contact</a>
-        </nav>
-    </header>
+    }
     
-    <main class="container">
-        <div class="contact-container">
-            <h1>{{.Title}}</h1>
-            
-            {{if .Body}}
-            <article class="mt-2">
-                {{.Body | safeHTML}}
-            </article>
-            {{end}}
-            
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h2>Get in Touch</h2>
-                    <p>Feel free to reach out!</p>
-                    
-                    <ul class="contact-details">
-                        <li>
-                            <div class="contact-detail-content">
-                                <p>santiago.porollan@gmail.com</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="contact-detail-content">
-                                <a href="https://linkedin.com/in/santiago-porollan">Linkedin</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="contact-detail-content">
-                                <a href="https://github.com/sporollan">Github</a>
-                            </div>
-                        </li>
-                    </ul>
-                
-                </div>
-                
-            </div>
-        </div>
-    </main>
+    .contact-info {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 2rem;
+    }
     
-    <footer class="site-footer">
-        <div class="footer-content">
-            <p>© {{now.Year}} {{.SiteName}}</p>
-            <div class="social-links">
-                <a href="https://github.com/sporollan" class="social-link" target="_blank" rel="noopener">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                    </svg>
-                </a>
-                <a href="https://linkedin.com/in/santiago-porollan" class="social-link" target="_blank" rel="noopener">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect x="2" y="9" width="4" height="12"></rect>
-                        <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
-                </a>
-            </div>
-            <p>sporollan/site v1</p>
-        </div>
-    </footer>
+    .contact-form {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 2rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--blue);
+        font-weight: 500;
+    }
+    
+    .form-input,
+    .form-textarea {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        background: var(--surface-light);
+        border: 1px solid var(--border-light);
+        border-radius: 8px;
+        color: var(--foreground);
+        font-family: var(--font-sans);
+        font-size: 1rem;
+        transition: all 0.2s ease;
+    }
+    
+    .form-input:focus,
+    .form-textarea:focus {
+        outline: none;
+        border-color: var(--blue);
+        box-shadow: 0 0 0 3px rgba(122, 162, 247, 0.1);
+    }
+    
+    .form-textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+    
+    .contact-details {
+        list-style: none;
+        padding: 0;
+        margin-top: 2rem;
+    }
+    
+    .contact-details li {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 0rem;
+        padding-bottom: 0.5rem;
+        
+    }
+    
+    .contact-details li:last-child {
+        border-bottom: none;
+    }
+    
+    .contact-icon {
+        background: linear-gradient(135deg, var(--blue), var(--purple));
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    
+    .contact-detail-content h3 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.1rem;
+        color: var(--foreground);
+    }
+    
+    .contact-detail-content p {
+        margin: 0;
+        color: var(--comment);
+    }
+    
+    .contact-success {
+        background: linear-gradient(135deg, var(--green), var(--cyan));
+        color: white;
+        padding: 1rem;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 2rem;
+        display: none;
+    }
+    
+    .contact-success.show {
+        display: block;
+    }
+    
+    .form-disclaimer {
+        font-size: 0.9rem;
+        color: var(--comment);
+        margin-top: 1rem;
+        text-align: center;
+    }
+</style>
+{{end}}
 
-</body>
-</html>
+{{define "main_contact"}}
+<div class="contact-container">
+    <h1>{{.Title}}</h1>
+    
+    {{if .Body}}
+    <article class="mt-2">
+        {{.Body | safeHTML}}
+    </article>
+    {{end}}
+    
+    <div class="contact-grid">
+        <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <p>Feel free to reach out!</p>
+            
+            <ul class="contact-details">
+                <li>
+                    <div class="contact-detail-content">
+                        <p>santiago.porollan@gmail.com</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="contact-detail-content">
+                        <a href="https://linkedin.com/in/santiago-porollan">Linkedin</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="contact-detail-content">
+                        <a href="https://github.com/sporollan">Github</a>
+                    </div>
+                </li>
+            </ul>
+        
+        </div>
+        
+    </div>
+</div>
+{{end}}
+
+{{define "contact.html"}}
+{{template "base" .}}
+{{end}}
