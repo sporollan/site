@@ -5,11 +5,12 @@ tags: ["site", "projects"]
 description: "A quick thought about the existance of this site"
 ---
 
-## Why did i build a site?
+## Why did I build a site?
 
-After many months building (and breaking) random projects, it felt like I needed
-an anchor, a way to solidify what i've done, a place where i could push all the
-gibberish i tend to write. Not really meant to be read, it's just a way to ground myself and visualize what i've done as I gear up for a job search. A Way to actually stick with something I like and try to become an expert on it.
+After months of building all sorts of projects, I wanted a single 
+place to pull everything together. A home for all the code and notes I write. 
+It’s mainly for me, a way to see my own progress 
+and stay focused on diving deep into things I enjoy.
 
 This is what this site is. A tool for visualizing and organizing my journey.
 Over time it should contain whatever templates and real projects I made that 
