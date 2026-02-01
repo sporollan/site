@@ -31,27 +31,78 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    /* Tokyo Night Light Colors */
-    --background: #d5d6db;
-    --foreground: #343b58;
-    --selection: #99c1f1;
-    --comment: #8c8fa1;
-    --blue: #2a7bde;
-    --red: #c01c28;
-    --yellow: #a2734c;
-    --green: #26a269;
-    --purple: #5d5db8;
-    --cyan: #1b9ef3;
-    --orange: #e66100;
-    --pink: #8c54fe;
+    /* Tokyo Night Light Colors - Enhanced */
+    --background: #f5f7fa;      /* Light blue-gray base */
+    --foreground: #2d3748;      /* Dark slate for text */
+    --selection: #a1b8e0;
+    --comment: #718096;
+    
+    /* Accent Colors */
+    --blue: #1a5dc1;            /* Headers */
+    --red: #c53030;             /* Adjusted for better contrast */
+    --yellow: #975a16;          /* Darker for visibility */
+    --green: #276749;           /* Forest green */
+    --purple: #4a57c8;          /* Brightened slightly */
+    --cyan: #0077aa;            /* Links - distinct from headers */
+    --orange: #b3561a;
+    --pink: #805ad5;            /* Adjusted purple-pink */
 
-    /* UI Colors */
-    --surface: #e2e3e7;
-    --surface-light: #e6e7ed;
-    --border: #a1a6b5;
-    --border-light: #b7bac6;
-    --accent: #1c71d8;
+    /* UI Colors - Layered approach */
+    --surface: #ffffff;         /* White surface on top of background */
+    --surface-light: #f8fafc;   /* Very light for elevated surfaces */
+    --border: #e2e8f0;          /* Soft border */
+    --border-light: #edf2f7;    /* Subtle divider */
+    --accent: #1a5dc1;          /* UI accent */
   }
+}
+
+/* Theme class overrides */
+html.theme-light {
+  /* Tokyo Night Light Colors - Enhanced */
+  --background: #f5f7fa;      /* Light blue-gray base */
+  --foreground: #2d3748;      /* Dark slate for text */
+  --selection: #a1b8e0;
+  --comment: #718096;
+  
+  /* Accent Colors */
+  --blue: #1a5dc1;            /* Headers */
+  --red: #c53030;             /* Adjusted for better contrast */
+  --yellow: #975a16;          /* Darker for visibility */
+  --green: #276749;           /* Forest green */
+  --purple: #4a57c8;          /* Brightened slightly */
+  --cyan: #0077aa;            /* Links - distinct from headers */
+  --orange: #b3561a;
+  --pink: #805ad5;            /* Adjusted purple-pink */
+
+  /* UI Colors - Layered approach */
+  --surface: #ffffff;         /* White surface on top of background */
+  --surface-light: #f8fafc;   /* Very light for elevated surfaces */
+  --border: #e2e8f0;          /* Soft border */
+  --border-light: #edf2f7;    /* Subtle divider */
+  --accent: #1a5dc1;          /* UI accent */
+}
+
+html.theme-dark {
+  /* Tokyo Night Colors */
+  --background: #1a1b26;
+  --foreground: #a9b1d6;
+  --selection: #33467c;
+  --comment: #565f89;
+  --blue: #7aa2f7;
+  --red: #f7768e;
+  --yellow: #e0af68;
+  --green: #9ece6a;
+  --purple: #9d7cd8;
+  --cyan: #7dcfff;
+  --orange: #ff9e64;
+  --pink: #bb9af7;
+
+  /* UI Colors */
+  --surface: #16161e;
+  --surface-light: #1f2335;
+  --border: #292e42;
+  --border-light: #363b54;
+  --accent: #2ac3de;
 }
 
 * {
@@ -573,6 +624,11 @@ article {
 .theme-toggle:hover {
   background: var(--surface);
   transform: rotate(30deg);
+}
+
+.theme-toggle:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* Responsive Design */
